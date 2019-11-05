@@ -32,6 +32,7 @@ type FlatConfig struct {
 	StartRetryTimeout   *string           `mapstructure:"start_retry_timeout" cty:"start_retry_timeout"`
 	SkipClean           *bool             `mapstructure:"skip_clean" cty:"skip_clean"`
 	ExpectDisconnect    *bool             `mapstructure:"expect_disconnect" cty:"expect_disconnect"`
+	EnvVarFormat        *string           `mapstructure:"env_var_format" cty:"env_var_format"`
 }
 
 // FlatMapstructure returns a new FlatConfig.
@@ -66,6 +67,7 @@ func (*FlatConfig) HCL2Spec() map[string]hcldec.Spec {
 		"start_retry_timeout":        &hcldec.AttrSpec{Name: "start_retry_timeout", Type: cty.String, Required: false},
 		"skip_clean":                 &hcldec.AttrSpec{Name: "skip_clean", Type: cty.Bool, Required: false},
 		"expect_disconnect":          &hcldec.AttrSpec{Name: "expect_disconnect", Type: cty.Bool, Required: false},
+		"env_var_format":             &hcldec.AttrSpec{Name: "env_var_format", Type: cty.String, Required: false},
 	}
 	return s
 }
